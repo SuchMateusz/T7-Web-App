@@ -14,6 +14,7 @@ namespace WebAppMVC.Controllers
             var account = accounts.FindAll(p => p.IdCustomer == Id);
             return View(account);
         }
+
         public IActionResult ViewAllAccounts()
         {
             var accounts = CreateAccounts();

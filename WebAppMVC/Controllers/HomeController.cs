@@ -71,11 +71,6 @@ namespace WebAppMVC.Controllers
             return items;
         }
 
-        public IActionResult List()
-        {
-            return View("ViewListObjects");
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
