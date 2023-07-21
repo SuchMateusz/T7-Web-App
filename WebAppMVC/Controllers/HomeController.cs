@@ -45,6 +45,13 @@ namespace WebAppMVC.Controllers
             return View(itemDetails);
         }
 
+        public IActionResult ViewAddingNewItem()
+        {
+            var items = new List<Item>();
+            items.Add(new Item { Id = 1, Name = "Apple", TypeId = "1. Sweet" });
+            return View(items);
+        }
+
         private List<ItemIngredients> ItemDesc()
         {
             var itemsDesc = new List<ItemIngredients>();
