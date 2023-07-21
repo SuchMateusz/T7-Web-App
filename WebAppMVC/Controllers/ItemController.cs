@@ -6,7 +6,7 @@ using WebAppMVC.Application.Services;
 
 namespace WebAppMVC.Controllers
 {
-    public class BlogController : Controller
+    public class ItemController : Controller
     {
         public IActionResult RecipeToCreateTheItem()
         {

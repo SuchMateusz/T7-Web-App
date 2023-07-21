@@ -27,11 +27,6 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult TestParcial()
-        {
-            return PartialView();
-        }
-
         public IActionResult ViewListOfItems()
         {
             List<Item> listOfItems = CreateNewListOfItems();
@@ -43,13 +38,6 @@ namespace WebAppMVC.Controllers
             List<ItemIngredients> itemsDesc = ItemDesc();
             var itemDetails = itemsDesc.FindAll(p => p.ItemId == itemId);
             return View(itemDetails);
-        }
-
-        public IActionResult ViewAddingNewItem()
-        {
-            var items = new List<Item>();
-            items.Add(new Item { Id = 1, Name = "Apple", TypeId = "1. Sweet" });
-            return View(items);
         }
 
         private List<ItemIngredients> ItemDesc()

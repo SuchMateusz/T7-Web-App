@@ -16,5 +16,6 @@ namespace WebAppMVC.Models
         public string City { get; set; }
 
         public int PhoneNumber { get; set; }
+        public string Password { get; set; }
     }
 }
