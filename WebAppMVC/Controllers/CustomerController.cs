@@ -21,12 +21,6 @@ namespace WebAppMVC.Controllers
             return View(accounts);
         }
 
-        public IActionResult DeleteItem()
-        {
-            var accounts = CreateAccounts();
-            var account = accounts.FindAll(p => p.IdCustomer == 2);
-            return View(accounts);
-        }
         private List<Users> CreateAccounts()
         {
             List<Users> accounts = new List<Users>();
