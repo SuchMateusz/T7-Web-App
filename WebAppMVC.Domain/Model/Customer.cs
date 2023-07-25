@@ -14,12 +14,6 @@ namespace WebAppMVC.Domain.Model
 
         public string Password { get; set; }
 
-        [DisplayName("Name")]
-        public string NameUser { get; set; }
-
-        [DisplayName("Surname")]
-        public string LastNameUser { get; set; }
-
         public CustomerContactInformaction CustomerContactInformaction { get; set; }
 
         public virtual ICollection<ContactDetail> ContactDetails { get; set; } 

@@ -7,12 +7,14 @@ namespace WebAppMVC.Domain.Model
     public class ContactDetail
     {
         public int Id { get; set; }
-
+        
+        //Telefony i adresy mailowe
         public string ContactDetailInformaction { get; set; }
 
+        //przetrzymywanie informacji czy to numer telefonu czy mail
         public int ContactDetailTypeId { get; set; }
 
-        public ContactDetailType contactDetailType { get; set; }
+        public ContactDetailType ContactDetailType { get; set; }
 
         public int CustomerId { get; set; }
 

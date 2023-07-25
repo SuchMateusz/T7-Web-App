@@ -12,5 +12,6 @@ namespace WebAppMVC.Domain.Model
 
         public virtual ICollection<ItemIngredients> ItemIngredients { get; set; }
 
+        public virtual ICollection<ItemRecipe> ItemRecipe { get; set; }
     }
 }
