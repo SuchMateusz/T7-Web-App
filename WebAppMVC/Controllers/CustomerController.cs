@@ -10,13 +10,25 @@ namespace WebAppMVC.Controllers
     {
         public IActionResult ViewAccountDetails(int Id)
         {
-            return View();
+            var accounts = CreateAccounts();
+            var account = accounts.FindAll(p => p.IdCustomer == Id);
+            return View(account);
         }
 
         public IActionResult ViewAllAccounts()
         {
+            var accounts = CreateAccounts();
+            return View(accounts);
+        }
 
-            return View();
+        private List<Users> CreateAccounts()
+        {
+            List<Users> accounts = new List<Users>();
+            accounts.Add(new Users { IdCustomer = 1, NameCustomer = "Mateusz", ZipCode = "40-231", City = "Warsaw" , Password = "asd"});
+            accounts.Add(new Users { IdCustomer = 2, NameCustomer = "Daniel", ZipCode = "23-121", City = "Wrocław", Password = "wert" });
+            accounts.Add(new Users { IdCustomer = 3, NameCustomer = "Agnieszka", ZipCode = "40-231", City = "Warsaw", Password = "ga" });
+            accounts.Add(new Users { IdCustomer = 4, NameCustomer = "Dominika", ZipCode = "57-321", City = "Lublin", Password = "qwerty" });
+            return accounts;
         }
     }
 }

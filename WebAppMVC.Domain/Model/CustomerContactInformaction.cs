@@ -11,5 +11,9 @@ namespace WebAppMVC.Domain.Model
 
         [DisplayName("Surname")]
         public string LastNameUser { get; set; }
+
+        public int CustomerRef { get; set; }
+
+        public Customer Customer { get; set; }
     }
 }

@@ -21,4 +21,9 @@
     <ProjectReference Include="..\WebAppMVC.Infrastructure\WebAppMVC.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Item\" />
+  </ItemGroup>
+
 </Project>
