@@ -8,7 +8,7 @@
 
         public string Description { get; set; }
 
-        public int ItemId { get; set; }
+        public int ItemRef { get; set; }
 
         public virtual Item Item { get; set; }
     }

@@ -14,10 +14,12 @@ namespace WebAppMVC.Domain.Model
 
         public string Password { get; set; }
 
+        public string NIP { get; set; }
+
         public CustomerContactInformaction CustomerContactInformaction { get; set; }
 
         public virtual ICollection<ContactDetail> ContactDetails { get; set; } 
 
-        public virtual ICollection<Address> AddressDetails { get; set; }
+        public Address AddressDetails { get; set; }
     }
 }

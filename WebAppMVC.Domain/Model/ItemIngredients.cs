@@ -13,8 +13,8 @@ namespace WebAppMVC.Domain.Model
         public string NumberOfPiece { get; set; }
 
         public int NumberOfLiters { get; set; }
-
-        public int ItemId { get; set; }
+        
+        public int ItemRef { get; set; }
 
         public virtual Item Item { get; set; }
     }

@@ -9,8 +9,10 @@ namespace WebAppMVC.Domain.Model
         [DisplayName("Name")]
         public string NameUser { get; set; }
 
-        [DisplayName("Surname")]
+        [DisplayName("Last Name")]
         public string LastNameUser { get; set; }
+
+        public string Position { get; set; }
 
         public int CustomerRef { get; set; }
 
