@@ -12,13 +12,17 @@ namespace WebAppMVC.Domain.Model
 
         public int TypeId { get; set; }
 
-        public int Price { get; set; } 
+        public int Price { get; set; }
+
+        public int YearProduction { get; set; }
+
+        public int SugarContent { get; set; }
 
         public virtual Type Type { get; set; }
 
-        public virtual ICollection<ItemIngredients> ItemIngredients { get; set; }
+        public ItemIngredients ItemIngredients { get; set; }
 
-        public virtual ICollection<ItemRecipe> ItemRecipe { get; set; }
+        public ItemRecipe ItemRecipe { get; set; }
 
         public ICollection<ItemTag> ItemTags { get; set; }
     }

@@ -73,6 +73,15 @@ namespace WebAppMVC.Infrastructure
                 .HasOne<Tag> (it => it.Tag)
                 .WithMany(t=>t.ItemTags)
                 .HasForeignKey(it => it.TagId);
+
+            builder.Entity<Item>()
+                .HasOne(a => a.ItemIngredients).WithOne(b => b.Item)
+                .HasForeignKey<ItemIngredients>(it => it.ItemRef);
+            
+            builder.Entity<Item>()
+                .HasOne(a => a.ItemRecipe).WithOne(b => b.Item)
+                .HasForeignKey<ItemRecipe>(it => it.ItemRef);
+
         }
     }
 }
