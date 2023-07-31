@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAppMVC.Application.Interfaces;
 using WebAppMVC.Domain.Model;
 using Type = WebAppMVC.Domain.Model.Type;
 
 namespace WebAppMVC.Infrastructure.Repositories
 {
-    public class ItemRepository
+    public class ItemRepository : IItemRepository
     {
         private readonly Context _context;
         public ItemRepository(Context context)

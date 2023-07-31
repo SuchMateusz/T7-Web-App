@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAppMVC.Application.Interfaces;
 using WebAppMVC.Domain.Model;
 
 namespace WebAppMVC.Infrastructure.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly Context _context;
         public CustomerRepository(Context context)

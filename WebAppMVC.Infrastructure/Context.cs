@@ -81,7 +81,6 @@ namespace WebAppMVC.Infrastructure
             builder.Entity<Item>()
                 .HasOne(a => a.ItemRecipe).WithOne(b => b.Item)
                 .HasForeignKey<ItemRecipe>(it => it.ItemRef);
-
         }
     }
 }
