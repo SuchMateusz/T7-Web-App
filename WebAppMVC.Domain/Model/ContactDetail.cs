@@ -8,7 +8,7 @@ namespace WebAppMVC.Domain.Model
     {
         public int Id { get; set; }
         
-        //Telefony i adresy mailowe
+        //zapisywanie numery Telefonu i adresy mailowe
         public string ContactDetailInformaction { get; set; }
 
         //przetrzymywanie informacji czy to numer telefonu czy mail

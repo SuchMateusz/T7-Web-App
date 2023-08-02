@@ -45,7 +45,7 @@ namespace WebAppMVC.Infrastructure.Repositories
             return ContactDetailType;
         }
 
-        public IQueryable<CustomerContactInformaction> customerContactInformactions()
+        public IQueryable<CustomerContactInformaction> CustomerContactInformactions()
         {
             var ContactInformaction = _context.CustomerContactInformactions;
             return ContactInformaction;

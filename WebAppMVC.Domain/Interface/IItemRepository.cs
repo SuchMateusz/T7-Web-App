@@ -20,5 +20,9 @@ namespace WebAppMVC.Application.Interfaces
         public IQueryable<Tag> GetAllTags();
 
         public IQueryable<Type> GetAllTypes();
+
+        public IQueryable<ItemIngredients> GetAllIngredientstem();
+
+        public IQueryable<ItemDescription> GetAllRecipes();
     }
 }

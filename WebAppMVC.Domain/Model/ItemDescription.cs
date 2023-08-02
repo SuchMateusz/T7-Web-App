@@ -1,6 +1,6 @@
 ﻿namespace WebAppMVC.Domain.Model
 {
-    public class ItemRecipe
+    public class ItemDescription
     {
         public int Id { get; set; }
 

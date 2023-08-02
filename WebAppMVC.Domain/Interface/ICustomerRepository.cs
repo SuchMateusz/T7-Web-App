@@ -16,9 +16,8 @@ namespace WebAppMVC.Application.Interfaces
 
         public IQueryable<ContactDetailType> GetAllContactDetailType();
 
-        public IQueryable<CustomerContactInformaction> customerContactInformactions();
+        public IQueryable<CustomerContactInformaction> CustomerContactInformactions();
 
         public IQueryable<Address> Addresses();
-
     }
 }

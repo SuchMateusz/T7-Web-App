@@ -58,5 +58,17 @@ namespace WebAppMVC.Infrastructure.Repositories
             var types = _context.Types;
             return types;
         }
+
+        public IQueryable<ItemIngredients> GetAllIngredientstem()
+        {
+            var ingredients = _context.ItemIngredients;
+            return ingredients;
+        }
+
+        public IQueryable<ItemDescription> GetAllRecipes()
+        {
+            var recipes = _context.ItemDescriptions;
+            return recipes;
+        }
     }
 }

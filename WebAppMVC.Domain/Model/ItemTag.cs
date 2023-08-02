@@ -7,7 +7,6 @@ namespace WebAppMVC.Domain.Model
     public class ItemTag
     {
         //Tabela pomocnicza,
-
         //klucze obce do tabel które chce powiązać
         public int ItemId { get; set; }
 
@@ -16,6 +15,5 @@ namespace WebAppMVC.Domain.Model
         public Item Item { get; set; }
 
         public Tag Tag { get; set; }
-
     }
 }
