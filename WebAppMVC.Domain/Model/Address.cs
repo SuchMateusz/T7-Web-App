@@ -19,7 +19,7 @@ namespace WebAppMVC.Domain.Model
         public string Country { get; set; }
 
         //public int AddressCountryTypeId { get; set; }
-        //public virutal AddressCountryTypeId { get; set; }
+        //public AddressCountryTypeId AddressCountryTypeId { get; set; }
 
         public int CustomerId { get; set; }
 
