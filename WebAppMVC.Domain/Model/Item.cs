@@ -25,5 +25,7 @@ namespace WebAppMVC.Domain.Model
         public ItemDescription ItemDescription { get; set; }
 
         public virtual ICollection<ItemTag> ItemTags { get; set; }
+
+        public ItemCategory ItemCategory { get; set; }
     }
 }

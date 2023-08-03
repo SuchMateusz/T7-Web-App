@@ -39,14 +39,10 @@ namespace WebAppMVC.Infrastructure
         {
             base.OnModelCreating(builder);
 
+            //1 do 1
             builder.Entity<Customer>()
                 .HasOne(a => a.CustomerContactInformaction).WithOne(b => b.Customer)
                 .HasForeignKey<CustomerContactInformaction>(e => e.CustomerRef);
-
-            builder.Entity<Address>()
-                .HasOne<Customer>(it => it.Customer)
-                .WithMany(b => b.AddressDetails)
-                .HasForeignKey(e => e.CustomerId);
 
             builder.Entity<Customer>()
                 .HasMany<Address>(it => it.AddressDetails)
@@ -79,19 +75,20 @@ namespace WebAppMVC.Infrastructure
                 .WithMany(t=>t.ItemTags)
                 .HasForeignKey(it => it.TagId);
 
-            builder.Entity<ItemIngredients>()
-                .HasOne<Item>(it => it.Item)
-                .WithMany(b => b.ItemIngredients)
-                .HasForeignKey(e => e.ItemRef);
-
             builder.Entity<Item>()
                 .HasMany<ItemIngredients>(it => it.ItemIngredients)
                 .WithOne(b => b.Item)
                 .HasForeignKey(e => e.ItemRef);
 
+            //1 do 1
             builder.Entity<Item>()
                 .HasOne(a => a.ItemDescription).WithOne(b => b.Item)
                 .HasForeignKey<ItemDescription>(it => it.ItemRef);
+
+            builder.Entity<Item>()
+                .HasOne<ItemCategory>(it => it.ItemCategory)
+                .WithMany(i => i.Items)
+                .HasForeignKey<ItemCategory>(it => it.Item);
         }
     }
 }

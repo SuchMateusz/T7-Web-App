@@ -23,6 +23,6 @@ namespace WebAppMVC.Domain.Model
 
         public int CustomerId { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public Customer Customer { get; set; }
     }
 }
