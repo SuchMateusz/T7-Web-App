@@ -44,6 +44,7 @@ namespace WebAppMVC.Infrastructure
                 .HasOne(a => a.CustomerContactInformaction).WithOne(b => b.Customer)
                 .HasForeignKey<CustomerContactInformaction>(e => e.CustomerRef);
 
+            //1 do wielu?? wiele do 1?
             builder.Entity<Customer>()
                 .HasMany<Address>(it => it.AddressDetails)
                 .WithOne(b => b.Customer)
@@ -88,12 +89,16 @@ namespace WebAppMVC.Infrastructure
                 .WithOne(b => b.Item)
                 .HasForeignKey<ItemDescription>(it => it.ItemRef);
 
-
             //1 do wielu.
             builder.Entity<Item>()
                 .HasOne<ItemCategory>(it => it.ItemCategory)
                 .WithMany(i => i.Items)
                 .HasForeignKey(it => it.ItemCategoryId);
+
+            builder.Entity<Item>()
+                .HasOne<Domain.Model.Type>(it => it.Type)
+                .WithMany(it => it.Items)
+                .HasForeignKey(it => it.TypeId);
         }
     }
 }
