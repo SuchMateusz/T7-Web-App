@@ -12,8 +12,6 @@ namespace WebAppMVC.Domain.Model
 
         public string Name { get; set; }
 
-        public int ItemRef { get; set; }
-
         public ICollection<Item> Items { get; set; }
     }
 }

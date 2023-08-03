@@ -18,6 +18,8 @@ namespace WebAppMVC.Domain.Model
 
         public int SugarContent { get; set; }
 
+        public int ItemCategoryId { get; set; }
+
         public virtual Type Type { get; set; }
 
         public virtual ICollection<ItemIngredients> ItemIngredients { get; set; }

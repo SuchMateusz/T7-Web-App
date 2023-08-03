@@ -70,11 +70,13 @@ namespace WebAppMVC.Infrastructure
                 .WithMany(i => i.ItemTags)
                 .HasForeignKey(it => it.ItemId);
 
+            //1 do wielu
             builder.Entity<ItemTag>()
                 .HasOne<Tag> (it => it.Tag)
                 .WithMany(t=>t.ItemTags)
                 .HasForeignKey(it => it.TagId);
 
+            //wiele składników ma jednego itema. wiele do 1
             builder.Entity<Item>()
                 .HasMany<ItemIngredients>(it => it.ItemIngredients)
                 .WithOne(b => b.Item)
@@ -82,13 +84,16 @@ namespace WebAppMVC.Infrastructure
 
             //1 do 1
             builder.Entity<Item>()
-                .HasOne(a => a.ItemDescription).WithOne(b => b.Item)
+                .HasOne(a => a.ItemDescription)
+                .WithOne(b => b.Item)
                 .HasForeignKey<ItemDescription>(it => it.ItemRef);
 
+
+            //1 do wielu.
             builder.Entity<Item>()
                 .HasOne<ItemCategory>(it => it.ItemCategory)
                 .WithMany(i => i.Items)
-                .HasForeignKey<ItemCategory>(it => it.Item);
+                .HasForeignKey(it => it.ItemCategoryId);
         }
     }
 }
