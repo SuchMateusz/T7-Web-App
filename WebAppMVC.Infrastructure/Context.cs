@@ -94,7 +94,7 @@ namespace WebAppMVC.Infrastructure
                 .HasOne<ItemCategory>(it => it.ItemCategory)
                 .WithMany(i => i.Items)
                 .HasForeignKey(it => it.ItemCategoryId);
-
+            //
             builder.Entity<Item>()
                 .HasOne<Domain.Model.Type>(it => it.Type)
                 .WithMany(it => it.Items)
