@@ -45,16 +45,58 @@ namespace WebAppMVC.Infrastructure.Repositories
             return ContactDetailType;
         }
 
-        public IQueryable<CustomerContactInformaction> CustomerContactInformactions()
+        public IQueryable<CustomerContactInformaction> GetCustomerContactInformactions()
         {
             var ContactInformaction = _context.CustomerContactInformactions;
             return ContactInformaction;
         }
 
-        public IQueryable<Address> Addresses()
+        public int AddAddresses(Address address)
+        {
+            _context.Addresses.Add(address);
+            _context.SaveChanges();
+            return address.Id;
+        }
+
+        public void DeleteAddresses(Address address)
+        {
+            _context.Addresses.Remove(address);
+            _context.SaveChanges();
+        }
+
+        public IQueryable<Address> GetAddresses()
         {
             var addresses = _context.Addresses;
             return addresses;
         }
+
+        public int AddContactDetail(ContactDetail contactDetail)
+        {
+            _context.ContactDetails.Add(contactDetail);
+            _context.SaveChanges();
+            return contactDetail.Id;
+        }
+
+        public void DeleteContactDetail(ContactDetail contactDetail)
+        {
+            _context.ContactDetails.Remove(contactDetail);
+            _context.SaveChanges();
+
+        }
+
+        public int AddContactDetailType(ContactDetailType contactDetailType)
+        {
+            _context.ContactDetailTypes.Add(contactDetailType);
+            _context.SaveChanges();
+            return contactDetailType.Id;
+        }
+
+        public void DeleteContactDetailType(ContactDetailType contactDetailType)
+        {
+            _context.ContactDetailTypes.Remove(contactDetailType);
+            _context.SaveChanges();
+        }
+
+
     }
 }

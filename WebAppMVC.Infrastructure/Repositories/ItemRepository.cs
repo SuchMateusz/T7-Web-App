@@ -59,16 +59,36 @@ namespace WebAppMVC.Infrastructure.Repositories
             return types;
         }
 
-        public IQueryable<ItemIngredients> GetAllIngredientstem()
+        public IQueryable<ItemIngredients> GetItemAllIngredients()
         {
             var ingredients = _context.ItemIngredients;
             return ingredients;
         }
 
-        public IQueryable<ItemDescription> GetAllRecipes()
+        public IQueryable<ItemDescription> GetAllDescriptions()
         {
             var recipes = _context.ItemDescriptions;
             return recipes;
+        }
+
+        public int AddItemCategory(ItemCategory itemCategory)
+        {
+            _context.ItemCategories.Add(itemCategory);
+            _context.SaveChanges();
+            return itemCategory.Id;
+        }
+
+        public int AddItemDescription(ItemDescription itemDescription)
+        {
+            _context.ItemDescriptions.Add(itemDescription);
+            _context.SaveChanges();
+            return itemDescription.Id;
+        }
+
+        public IQueryable<ItemCategory> GetAllCategories()
+        {
+            var categories = _context.ItemCategories;
+            return categories;
         }
     }
 }

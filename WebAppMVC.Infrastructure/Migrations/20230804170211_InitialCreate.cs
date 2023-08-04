@@ -79,6 +79,19 @@ namespace WebAppMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ItemCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tags",
                 columns: table => new
                 {
@@ -97,7 +110,8 @@ namespace WebAppMVC.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -292,15 +306,43 @@ namespace WebAppMVC.Infrastructure.Migrations
                     TypeId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     YearProduction = table.Column<int>(type: "int", nullable: false),
-                    SugarContent = table.Column<int>(type: "int", nullable: false)
+                    SugarContent = table.Column<int>(type: "int", nullable: false),
+                    ItemCategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Items", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Items_ItemCategories_ItemCategoryId",
+                        column: x => x.ItemCategoryId,
+                        principalTable: "ItemCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Items_Types_TypeId",
                         column: x => x.TypeId,
                         principalTable: "Types",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemDescriptions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemRef = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemDescriptions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItemDescriptions_Items_ItemRef",
+                        column: x => x.ItemRef,
+                        principalTable: "Items",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -321,27 +363,6 @@ namespace WebAppMVC.Infrastructure.Migrations
                     table.PrimaryKey("PK_ItemIngredients", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ItemIngredients_Items_ItemRef",
-                        column: x => x.ItemRef,
-                        principalTable: "Items",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ItemRecipes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ItemRef = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemRecipes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ItemRecipes_Items_ItemRef",
                         column: x => x.ItemRef,
                         principalTable: "Items",
                         principalColumn: "Id",
@@ -375,8 +396,7 @@ namespace WebAppMVC.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_CustomerId",
                 table: "Addresses",
-                column: "CustomerId",
-                unique: true);
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -429,16 +449,20 @@ namespace WebAppMVC.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemIngredients_ItemRef",
-                table: "ItemIngredients",
+                name: "IX_ItemDescriptions_ItemRef",
+                table: "ItemDescriptions",
                 column: "ItemRef",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemRecipes_ItemRef",
-                table: "ItemRecipes",
-                column: "ItemRef",
-                unique: true);
+                name: "IX_ItemIngredients_ItemRef",
+                table: "ItemIngredients",
+                column: "ItemRef");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_ItemCategoryId",
+                table: "Items",
+                column: "ItemCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Items_TypeId",
@@ -479,10 +503,10 @@ namespace WebAppMVC.Infrastructure.Migrations
                 name: "CustomerContactInformactions");
 
             migrationBuilder.DropTable(
-                name: "ItemIngredients");
+                name: "ItemDescriptions");
 
             migrationBuilder.DropTable(
-                name: "ItemRecipes");
+                name: "ItemIngredients");
 
             migrationBuilder.DropTable(
                 name: "ItemTags");
@@ -504,6 +528,9 @@ namespace WebAppMVC.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "ItemCategories");
 
             migrationBuilder.DropTable(
                 name: "Types");

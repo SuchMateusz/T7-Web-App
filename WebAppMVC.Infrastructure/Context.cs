@@ -27,6 +27,8 @@ namespace WebAppMVC.Infrastructure
 
         public DbSet<ItemTag> ItemTags { get; set; }
 
+        public DbSet<ItemCategory> ItemCategories { get; set; }
+
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Domain.Model.Type> Types { get; set; }
@@ -90,15 +92,21 @@ namespace WebAppMVC.Infrastructure
                 .HasForeignKey<ItemDescription>(it => it.ItemRef);
 
             //1 do wielu.
-            builder.Entity<Item>()
-                .HasOne<ItemCategory>(it => it.ItemCategory)
-                .WithMany(i => i.Items)
-                .HasForeignKey(it => it.ItemCategoryId);
-            //
+            //builder.Entity<Item>()
+            //    .HasOne<ItemCategory>(it => it.ItemCategory)
+            //    .WithMany(i => i.Items)
+            //    .HasForeignKey(it => it.ItemCategoryId);
+            
             builder.Entity<Item>()
                 .HasOne<Domain.Model.Type>(it => it.Type)
                 .WithMany(it => it.Items)
                 .HasForeignKey(it => it.TypeId);
+
+            //1 do wielu.
+            builder.Entity<ItemCategory>()
+                .HasMany<Item>(it => it.Items)
+                .WithOne(b => b.ItemCategory)
+                .HasForeignKey(e => e.ItemCategoryId);
         }
     }
 }

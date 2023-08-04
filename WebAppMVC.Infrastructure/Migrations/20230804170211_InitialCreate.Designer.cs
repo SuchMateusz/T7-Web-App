@@ -12,8 +12,8 @@ using WebAppMVC.Infrastructure;
 namespace WebAppMVC.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230803160545_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20230804170211_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -395,7 +395,7 @@ namespace WebAppMVC.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemCategory");
+                    b.ToTable("ItemCategories");
                 });
 
             modelBuilder.Entity("WebAppMVC.Domain.Model.ItemDescription", b =>

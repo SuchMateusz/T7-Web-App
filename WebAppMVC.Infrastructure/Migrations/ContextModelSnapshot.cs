@@ -392,7 +392,7 @@ namespace WebAppMVC.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemCategory");
+                    b.ToTable("ItemCategories");
                 });
 
             modelBuilder.Entity("WebAppMVC.Domain.Model.ItemDescription", b =>

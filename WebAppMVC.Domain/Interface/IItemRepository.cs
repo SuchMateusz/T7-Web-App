@@ -9,9 +9,9 @@ namespace WebAppMVC.Application.Interfaces
 {
     public interface IItemRepository
     {
-        public void DeleteItem(int itemId);
-
         public int AddItem(Item item);
+
+        public void DeleteItem(int itemId);
 
         public IQueryable<Item> GetItemByTypeId(int typeId);
 
@@ -21,8 +21,14 @@ namespace WebAppMVC.Application.Interfaces
 
         public IQueryable<Type> GetAllTypes();
 
-        public IQueryable<ItemIngredients> GetAllIngredientstem();
+        public IQueryable<ItemIngredients> GetItemAllIngredients();
 
-        public IQueryable<ItemDescription> GetAllRecipes();
+        public int AddItemDescription(ItemDescription itemDescription);
+
+        public IQueryable<ItemDescription> GetAllDescriptions();
+
+        public int AddItemCategory(ItemCategory itemCategory);
+
+        public IQueryable<ItemCategory> GetAllCategories();
     }
 }
