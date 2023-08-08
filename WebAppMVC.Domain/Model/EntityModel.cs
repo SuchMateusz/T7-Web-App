@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class ItemCategory : EntityModel
+    public class EntityModel
     {
-        public ICollection<Item> Items { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

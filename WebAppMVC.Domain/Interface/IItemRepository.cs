@@ -13,13 +13,13 @@ namespace WebAppMVC.Application.Interfaces
 
         public void DeleteItem(int itemId);
 
-        public IQueryable<Item> GetItemByTypeId(int typeId);
-
         public Item GetItemByID(int itemId);
 
-        public IQueryable<Tag> GetAllTags();
+        public int AddIngredients(ItemIngredients ingredients);
+        
+        public void DeleteIngredients(int itemId);
 
-        public IQueryable<Type> GetAllTypes();
+        public ItemIngredients GetIngredientsById(int itemId);
 
         public IQueryable<ItemIngredients> GetItemAllIngredients();
 

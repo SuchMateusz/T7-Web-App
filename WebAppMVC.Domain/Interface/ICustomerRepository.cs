@@ -12,13 +12,13 @@ namespace WebAppMVC.Application.Interfaces
 
         public void DeleteCustomer(int customerId);
 
-        public int AddContactDetail(ContactDetail contactDetail);
+        //public int AddContactDetail(ContactDetail contactDetail);
 
-        public void DeleteContactDetail(ContactDetail contactDetail);
+        //public void DeleteContactDetail(ContactDetail contactDetail);
 
-        public int AddContactDetailType(ContactDetailType contactDetailType);
+        //public int AddContactDetailType(ContactDetailType contactDetailType);
 
-        public void DeleteContactDetailType(ContactDetailType contactDetailType);
+        //public void DeleteContactDetailType(ContactDetailType contactDetailType);
         
         public IQueryable<ContactDetail> GetAllContactDetail();
 

@@ -34,29 +34,10 @@ namespace WebAppMVC.Infrastructure.Repositories
             return item.Id;
         }
 
-        public IQueryable<Item> GetItemByTypeId(int typeId)
-        {
-            var items = _context.Items.Where(i => i.TypeId == typeId);
-            return items;
-        }
-
         public Item GetItemByID(int itemId)
         {
-            //_context.Items.Where(i => i.Id == itemId).FirstOrDefault;
             var item = _context.Items.FirstOrDefault(i => i.Id == itemId);
             return item;
-        }
-
-        public IQueryable<Tag> GetAllTags()
-        {
-            var tags = _context.Tags;
-            return tags;
-        }
-
-        public IQueryable<Type> GetAllTypes()
-        {
-            var types = _context.Types;
-            return types;
         }
 
         public IQueryable<ItemIngredients> GetItemAllIngredients()
@@ -89,6 +70,29 @@ namespace WebAppMVC.Infrastructure.Repositories
         {
             var categories = _context.ItemCategories;
             return categories;
+        }
+
+        public int AddIngredients(ItemIngredients ingredients)
+        {
+            _context.ItemIngredients.Add(ingredients);
+            _context.SaveChanges();
+            return ingredients.Id;
+        }
+
+        public void DeleteIngredients(int itemId)
+        {
+            var item = _context.ItemIngredients.Find(itemId);
+            if (item != null)
+            {
+                _context.ItemIngredients.Remove(item);
+                _context.SaveChanges();
+            }
+        }
+
+        public ItemIngredients GetIngredientsById(int itemId)
+        {
+            var ingredients = _context.ItemIngredients.Find(itemId);
+            return ingredients;
         }
     }
 }

@@ -4,12 +4,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class Type
+    public class Type : EntityModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
         public int ItemId { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }

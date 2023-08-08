@@ -4,12 +4,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class ItemIngredients
+    public class ItemIngredients : EntityModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
         public string NumberOfPiece { get; set; }
 
         public int NumberOfLiters { get; set; }

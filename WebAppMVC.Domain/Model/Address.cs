@@ -4,10 +4,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class Address
+    public class Address : EntityModel
     {
-        public int Id { get; set; }
-
         public string BuildingNumber { get; set; }
 
         public string Street { get; set; }

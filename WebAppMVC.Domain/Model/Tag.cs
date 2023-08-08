@@ -4,12 +4,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class Tag
+    public class Tag : EntityModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
         public ICollection<ItemTag> ItemTags { get; set; }
     }
 }

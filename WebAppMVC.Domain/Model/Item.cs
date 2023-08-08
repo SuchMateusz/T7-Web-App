@@ -4,12 +4,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class Item
+    public class Item : EntityModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
         public int TypeId { get; set; }
 
         public int Price { get; set; }
@@ -17,6 +13,8 @@ namespace WebAppMVC.Domain.Model
         public int YearProduction { get; set; }
 
         public int SugarContent { get; set; }
+
+        public int Quantity { get; set; }
 
         public int ItemCategoryId { get; set; }
 

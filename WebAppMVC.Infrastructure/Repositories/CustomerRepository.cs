@@ -70,33 +70,31 @@ namespace WebAppMVC.Infrastructure.Repositories
             return addresses;
         }
 
-        public int AddContactDetail(ContactDetail contactDetail)
-        {
-            _context.ContactDetails.Add(contactDetail);
-            _context.SaveChanges();
-            return contactDetail.Id;
-        }
+        //public int AddContactDetail(ContactDetail contactDetail)
+        //{
+        //    _context.ContactDetails.Add(contactDetail);
+        //    _context.SaveChanges();
+        //    return contactDetail.Id;
+        //}
 
-        public void DeleteContactDetail(ContactDetail contactDetail)
-        {
-            _context.ContactDetails.Remove(contactDetail);
-            _context.SaveChanges();
+        //public void DeleteContactDetail(ContactDetail contactDetail)
+        //{
+        //    _context.ContactDetails.Remove(contactDetail);
+        //    _context.SaveChanges();
 
-        }
+        //}
 
-        public int AddContactDetailType(ContactDetailType contactDetailType)
-        {
-            _context.ContactDetailTypes.Add(contactDetailType);
-            _context.SaveChanges();
-            return contactDetailType.Id;
-        }
+        //public int AddContactDetailType(ContactDetailType contactDetailType)
+        //{
+        //    _context.ContactDetailTypes.Add(contactDetailType);
+        //    _context.SaveChanges();
+        //    return contactDetailType.Id;
+        //}
 
-        public void DeleteContactDetailType(ContactDetailType contactDetailType)
-        {
-            _context.ContactDetailTypes.Remove(contactDetailType);
-            _context.SaveChanges();
-        }
-
-
+        //public void DeleteContactDetailType(ContactDetailType contactDetailType)
+        //{
+        //    _context.ContactDetailTypes.Remove(contactDetailType);
+        //    _context.SaveChanges();
+        //}
     }
 }

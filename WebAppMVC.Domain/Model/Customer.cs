@@ -5,10 +5,8 @@ using System.Text;
 
 namespace WebAppMVC.Domain.Model
 {
-    public class Customer
+    public class Customer : EntityModel
     {
-        public int Id { get; set; }
-
         [DisplayName("Login")]
         public string LoginCustomer { get; set; }
 
@@ -16,9 +14,13 @@ namespace WebAppMVC.Domain.Model
 
         public string NIP { get; set; }
 
+        public string PhoneNubmer { get; set; }
+
+        public string AddressEmail { get; set; }
+
         public CustomerContactInformaction CustomerContactInformaction { get; set; }
 
-        public virtual ICollection<ContactDetail> ContactDetails { get; set; }
+        //public virtual ICollection<ContactDetail> ContactDetails { get; set; }
 
         public virtual ICollection<Address> AddressDetails { get; set; }
     }

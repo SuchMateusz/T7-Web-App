@@ -41,29 +41,27 @@ namespace WebAppMVC.Infrastructure
         {
             base.OnModelCreating(builder);
 
-            //1 do 1
             builder.Entity<Customer>()
                 .HasOne(a => a.CustomerContactInformaction).WithOne(b => b.Customer)
                 .HasForeignKey<CustomerContactInformaction>(e => e.CustomerRef);
 
-            //1 do wielu?? wiele do 1?
             builder.Entity<Customer>()
                 .HasMany<Address>(it => it.AddressDetails)
                 .WithOne(b => b.Customer)
                 .HasForeignKey(e => e.CustomerId);
 
-            builder.Entity<ContactDetail>()
-                .HasKey(it => new { it.ContactDetailTypeId, it.CustomerId });
+            //builder.Entity<ContactDetail>()
+            //    .HasKey(it => new { it.ContactDetailTypeId, it.CustomerId });
 
-            builder.Entity<ContactDetail>()
-                .HasOne<ContactDetailType> (it => it.ContactDetailType)
-                .WithMany(i => i.ContactDetails)
-                .HasForeignKey(it => it.ContactDetailTypeId);
+            //builder.Entity<ContactDetail>()
+            //    .HasOne<ContactDetailType> (it => it.ContactDetailType)
+            //    .WithMany(i => i.ContactDetails)
+            //    .HasForeignKey(it => it.ContactDetailTypeId);
 
-            builder.Entity<ContactDetail>()
-                .HasOne<Customer>(it => it.Customer)
-                .WithMany(i => i.ContactDetails)
-                .HasForeignKey(it => it.CustomerId);
+            //builder.Entity<ContactDetail>()
+            //    .HasOne<Customer>(it => it.Customer)
+            //    .WithMany(i => i.ContactDetails)
+            //    .HasForeignKey(it => it.CustomerId);
 
             builder.Entity<ItemTag>()
                 .HasKey(it => new { it.ItemId, it.TagId });
@@ -73,13 +71,11 @@ namespace WebAppMVC.Infrastructure
                 .WithMany(i => i.ItemTags)
                 .HasForeignKey(it => it.ItemId);
 
-            //1 do wielu
             builder.Entity<ItemTag>()
                 .HasOne<Tag> (it => it.Tag)
                 .WithMany(t=>t.ItemTags)
                 .HasForeignKey(it => it.TagId);
 
-            //wiele składników ma jednego itema. wiele do 1
             builder.Entity<Item>()
                 .HasMany<ItemIngredients>(it => it.ItemIngredients)
                 .WithOne(b => b.Item)
@@ -102,7 +98,6 @@ namespace WebAppMVC.Infrastructure
                 .WithMany(it => it.Items)
                 .HasForeignKey(it => it.TypeId);
 
-            //1 do wielu.
             builder.Entity<ItemCategory>()
                 .HasMany<Item>(it => it.Items)
                 .WithOne(b => b.ItemCategory)

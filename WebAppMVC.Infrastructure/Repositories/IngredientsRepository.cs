@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAppMVC.Domain.Model
+namespace WebAppMVC.Infrastructure.Repositories
 {
-    public class ItemCategory : EntityModel
+    public class IngredientsRepository
     {
-        public ICollection<Item> Items { get; set; }
+
+
     }
 }

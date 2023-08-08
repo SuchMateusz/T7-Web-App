@@ -2,13 +2,8 @@
 
 namespace WebAppMVC.Domain.Model
 {
-    public class CustomerContactInformaction
+    public class CustomerContactInformaction : EntityModel
     {
-        public int Id { get; set; }
-
-        [DisplayName("Name")]
-        public string NameUser { get; set; }
-
         [DisplayName("Last Name")]
         public string LastNameUser { get; set; }
 
