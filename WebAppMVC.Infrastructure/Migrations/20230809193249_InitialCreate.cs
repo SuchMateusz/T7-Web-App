@@ -51,7 +51,25 @@ namespace WebAppMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContactDetailTypes",
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LoginCustomer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NIP = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNubmer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddressEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ingredients",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -60,22 +78,7 @@ namespace WebAppMVC.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContactDetailTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Customers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LoginCustomer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NIP = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.PrimaryKey("PK_Ingredients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,8 +113,8 @@ namespace WebAppMVC.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ItemId = table.Column<int>(type: "int", nullable: false)
+                    ItemId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -235,7 +238,8 @@ namespace WebAppMVC.Infrastructure.Migrations
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -249,41 +253,15 @@ namespace WebAppMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContactDetails",
-                columns: table => new
-                {
-                    ContactDetailTypeId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    ContactDetailInformaction = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ContactDetails", x => new { x.ContactDetailTypeId, x.CustomerId });
-                    table.ForeignKey(
-                        name: "FK_ContactDetails_ContactDetailTypes_ContactDetailTypeId",
-                        column: x => x.ContactDetailTypeId,
-                        principalTable: "ContactDetailTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ContactDetails_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CustomerContactInformactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NameUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastNameUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerRef = table.Column<int>(type: "int", nullable: false)
+                    CustomerRef = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -302,12 +280,13 @@ namespace WebAppMVC.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TypeId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     YearProduction = table.Column<int>(type: "int", nullable: false),
                     SugarContent = table.Column<int>(type: "int", nullable: false),
-                    ItemCategoryId = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ItemCategoryId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -332,9 +311,9 @@ namespace WebAppMVC.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ItemRef = table.Column<int>(type: "int", nullable: false)
+                    ItemRef = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -351,16 +330,22 @@ namespace WebAppMVC.Infrastructure.Migrations
                 name: "ItemIngredients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemRef = table.Column<int>(type: "int", nullable: false),
+                    ItemIngredientsId = table.Column<int>(type: "int", nullable: false),
                     NumberOfPiece = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NumberOfLiters = table.Column<int>(type: "int", nullable: false),
-                    ItemRef = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemIngredients", x => x.Id);
+                    table.PrimaryKey("PK_ItemIngredients", x => new { x.ItemIngredientsId, x.ItemRef });
+                    table.ForeignKey(
+                        name: "FK_ItemIngredients_Ingredients_ItemIngredientsId",
+                        column: x => x.ItemIngredientsId,
+                        principalTable: "Ingredients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ItemIngredients_Items_ItemRef",
                         column: x => x.ItemRef,
@@ -438,11 +423,6 @@ namespace WebAppMVC.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContactDetails_CustomerId",
-                table: "ContactDetails",
-                column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CustomerContactInformactions_CustomerRef",
                 table: "CustomerContactInformactions",
                 column: "CustomerRef",
@@ -497,9 +477,6 @@ namespace WebAppMVC.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ContactDetails");
-
-            migrationBuilder.DropTable(
                 name: "CustomerContactInformactions");
 
             migrationBuilder.DropTable(
@@ -518,10 +495,10 @@ namespace WebAppMVC.Infrastructure.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "ContactDetailTypes");
+                name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "Ingredients");
 
             migrationBuilder.DropTable(
                 name: "Items");
