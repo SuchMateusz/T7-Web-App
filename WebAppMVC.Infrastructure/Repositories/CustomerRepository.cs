@@ -33,18 +33,6 @@ namespace WebAppMVC.Infrastructure.Repositories
             }
         }
 
-        public IQueryable<ContactDetail> GetAllContactDetail()
-        {
-            var ContactDetail = _context.ContactDetails;
-            return ContactDetail;
-        }
-
-        public IQueryable<ContactDetailType> GetAllContactDetailType()
-        {
-            var ContactDetailType = _context.ContactDetailTypes;
-            return ContactDetailType;
-        }
-
         public IQueryable<CustomerContactInformaction> GetCustomerContactInformactions()
         {
             var ContactInformaction = _context.CustomerContactInformactions;
@@ -69,32 +57,5 @@ namespace WebAppMVC.Infrastructure.Repositories
             var addresses = _context.Addresses;
             return addresses;
         }
-
-        //public int AddContactDetail(ContactDetail contactDetail)
-        //{
-        //    _context.ContactDetails.Add(contactDetail);
-        //    _context.SaveChanges();
-        //    return contactDetail.Id;
-        //}
-
-        //public void DeleteContactDetail(ContactDetail contactDetail)
-        //{
-        //    _context.ContactDetails.Remove(contactDetail);
-        //    _context.SaveChanges();
-
-        //}
-
-        //public int AddContactDetailType(ContactDetailType contactDetailType)
-        //{
-        //    _context.ContactDetailTypes.Add(contactDetailType);
-        //    _context.SaveChanges();
-        //    return contactDetailType.Id;
-        //}
-
-        //public void DeleteContactDetailType(ContactDetailType contactDetailType)
-        //{
-        //    _context.ContactDetailTypes.Remove(contactDetailType);
-        //    _context.SaveChanges();
-        //}
     }
 }

@@ -13,15 +13,15 @@ namespace WebAppMVC.Application.Interfaces
 
         public void DeleteItem(int itemId);
 
-        public Item GetItemByID(int itemId);
+        public Item GetItemById(int itemId);
 
-        public int AddIngredients(ItemIngredients ingredients);
+        public int AddItemIngredients(ItemIngredient ingredients);
         
-        public void DeleteIngredients(int itemId);
+        public void DeleteItemIngredients(int itemId);
 
-        public ItemIngredients GetIngredientsById(int itemId);
+        public ItemIngredient GetItemIngredientsById(int itemId);
 
-        public IQueryable<ItemIngredients> GetItemAllIngredients();
+        public IQueryable<ItemIngredient> GetAllItemIngredients();
 
         public int AddItemDescription(ItemDescription itemDescription);
 
@@ -30,5 +30,14 @@ namespace WebAppMVC.Application.Interfaces
         public int AddItemCategory(ItemCategory itemCategory);
 
         public IQueryable<ItemCategory> GetAllCategories();
+
+        public int AddIngredients(Ingredient ingredient);
+
+        public void DeleteIngredients(int ingredientId);
+
+        public Ingredient GetIngredientById(int ingredientId);
+
+        public IQueryable<Ingredient> GetAllIngredients();
+
     }
 }

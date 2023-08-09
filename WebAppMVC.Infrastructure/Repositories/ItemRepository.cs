@@ -34,16 +34,10 @@ namespace WebAppMVC.Infrastructure.Repositories
             return item.Id;
         }
 
-        public Item GetItemByID(int itemId)
+        public Item GetItemById(int itemId)
         {
             var item = _context.Items.FirstOrDefault(i => i.Id == itemId);
             return item;
-        }
-
-        public IQueryable<ItemIngredients> GetItemAllIngredients()
-        {
-            var ingredients = _context.ItemIngredients;
-            return ingredients;
         }
 
         public IQueryable<ItemDescription> GetAllDescriptions()
@@ -72,14 +66,14 @@ namespace WebAppMVC.Infrastructure.Repositories
             return categories;
         }
 
-        public int AddIngredients(ItemIngredients ingredients)
+        public int AddItemIngredients(ItemIngredient ingredients)
         {
             _context.ItemIngredients.Add(ingredients);
             _context.SaveChanges();
             return ingredients.Id;
         }
 
-        public void DeleteIngredients(int itemId)
+        public void DeleteItemIngredients(int itemId)
         {
             var item = _context.ItemIngredients.Find(itemId);
             if (item != null)
@@ -89,9 +83,44 @@ namespace WebAppMVC.Infrastructure.Repositories
             }
         }
 
-        public ItemIngredients GetIngredientsById(int itemId)
+        public IQueryable<ItemIngredient> GetAllItemIngredients()
+        {
+            var ingredients = _context.ItemIngredients;
+            return ingredients;
+        }
+
+        public ItemIngredient GetItemIngredientsById(int itemId)
         {
             var ingredients = _context.ItemIngredients.Find(itemId);
+            return ingredients;
+        }
+
+        public int AddIngredients (Ingredient ingredient)
+        {
+            _context.Ingredients.Add(ingredient);
+            _context.SaveChanges();
+            return ingredient.Id;
+        }
+
+        public void DeleteIngredients(int ingredientId)
+        {
+            var ingredient = _context.Ingredients.Find(ingredientId);
+            if (ingredient != null)
+            {
+                _context.Ingredients.Remove(ingredient);
+                _context.SaveChanges();
+            }
+        }
+
+        public Ingredient GetIngredientById(int ingredientId)
+        {
+            var ingredient = _context.Ingredients.Find (ingredientId);
+            return ingredient;
+        }
+
+        public IQueryable<Ingredient> GetAllIngredients()
+        {
+            var ingredients = _context.Ingredients;
             return ingredients;
         }
     }

@@ -20,7 +20,7 @@ namespace WebAppMVC.Domain.Model
 
         public virtual Type Type { get; set; }
 
-        public virtual ICollection<ItemIngredients> ItemIngredients { get; set; }
+        public virtual ICollection<ItemIngredient> ItemIngredients { get; set; }
 
         public ItemDescription ItemDescription { get; set; }
 

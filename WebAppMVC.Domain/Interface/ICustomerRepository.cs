@@ -20,9 +20,9 @@ namespace WebAppMVC.Application.Interfaces
 
         //public void DeleteContactDetailType(ContactDetailType contactDetailType);
         
-        public IQueryable<ContactDetail> GetAllContactDetail();
+        //public IQueryable<ContactDetail> GetAllContactDetail();
 
-        public IQueryable<ContactDetailType> GetAllContactDetailType();
+        //public IQueryable<ContactDetailType> GetAllContactDetailType();
 
         public IQueryable<CustomerContactInformaction> GetCustomerContactInformactions();
         

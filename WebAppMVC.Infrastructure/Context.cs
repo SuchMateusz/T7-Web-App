@@ -11,9 +11,9 @@ namespace WebAppMVC.Infrastructure
     {
         public DbSet<Address> Addresses { get; set; }
 
-        public DbSet<ContactDetail> ContactDetails { get; set; }
+        //public DbSet<ContactDetail> ContactDetails { get; set; }
 
-        public DbSet<ContactDetailType> ContactDetailTypes { get; set; }
+        //public DbSet<ContactDetailType> ContactDetailTypes { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
 
@@ -21,7 +21,9 @@ namespace WebAppMVC.Infrastructure
 
         public DbSet<Item> Items { get; set; }
 
-        public DbSet<ItemIngredients> ItemIngredients { get; set; }
+        public DbSet<ItemIngredient> ItemIngredients { get; set; }
+
+        public DbSet<Ingredient>  Ingredients { get; set; }
 
         public DbSet<ItemDescription> ItemDescriptions { get; set; }
 
@@ -77,21 +79,9 @@ namespace WebAppMVC.Infrastructure
                 .HasForeignKey(it => it.TagId);
 
             builder.Entity<Item>()
-                .HasMany<ItemIngredients>(it => it.ItemIngredients)
-                .WithOne(b => b.Item)
-                .HasForeignKey(e => e.ItemRef);
-
-            //1 do 1
-            builder.Entity<Item>()
                 .HasOne(a => a.ItemDescription)
                 .WithOne(b => b.Item)
                 .HasForeignKey<ItemDescription>(it => it.ItemRef);
-
-            //1 do wielu.
-            //builder.Entity<Item>()
-            //    .HasOne<ItemCategory>(it => it.ItemCategory)
-            //    .WithMany(i => i.Items)
-            //    .HasForeignKey(it => it.ItemCategoryId);
             
             builder.Entity<Item>()
                 .HasOne<Domain.Model.Type>(it => it.Type)
@@ -102,6 +92,19 @@ namespace WebAppMVC.Infrastructure
                 .HasMany<Item>(it => it.Items)
                 .WithOne(b => b.ItemCategory)
                 .HasForeignKey(e => e.ItemCategoryId);
+
+            builder.Entity<ItemIngredient>()
+                .HasKey(it => new { it.ItemIngredientsId, it.ItemRef });
+
+            builder.Entity<ItemIngredient>()
+                .HasOne<Item>(it => it.Item)
+                .WithMany(i => i.ItemIngredients)
+                .HasForeignKey(it => it.ItemRef);
+
+            builder.Entity<ItemIngredient>()
+                .HasOne<Ingredient>(it => it.Ingredients)
+                .WithMany(t => t.ItemIngredients)
+                .HasForeignKey(i => i.ItemIngredientsId);
         }
     }
 }
