@@ -40,6 +40,12 @@ namespace WebAppMVC.Infrastructure.Repositories
             return item;
         }
 
+        public IQueryable<Item> GetAllItems()
+        {
+            var items = _context.Items;
+            return items;
+        }
+
         public IQueryable<ItemDescription> GetAllDescriptions()
         {
             var recipes = _context.ItemDescriptions;
@@ -122,6 +128,58 @@ namespace WebAppMVC.Infrastructure.Repositories
         {
             var ingredients = _context.Ingredients;
             return ingredients;
+        }
+
+        public int AddTag(Tag tag)
+        {
+            _context.Tags.Add(tag);
+            _context.SaveChanges();
+            return tag.Id;
+        }
+
+        public void DeleteTag(Tag tag)
+        {
+            var tagId = _context.Tags.Find(tag);
+            if (tagId != null)
+            {
+                _context.Tags.Remove(tagId);
+                _context.SaveChanges();
+            }
+        }
+
+        public Tag GetTagById(int tagId)
+        {
+            var tagById = _context.Tags.Find(tagId);
+            return tagById;
+        }
+
+        public IQueryable<Tag> GetAllTags()
+        {
+            var allTags = _context.Tags;
+            return allTags;
+        }
+
+        public int AddType(Type type)
+        {
+            _context.Types.Add(type);
+            _context.SaveChanges();
+            return type.Id;
+        }
+
+        public void DeleteType(Type type)
+        {
+            var typeId = _context.Types.Find(type);
+            if (typeId != null)
+            {
+                _context.Types.Remove(typeId);
+                _context.SaveChanges();
+            }
+        }
+
+        public IQueryable<Type> GetAllTypes()
+        {
+            var types = _context.Types;
+            return types;
         }
     }
 }

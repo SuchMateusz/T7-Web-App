@@ -11,10 +11,6 @@ namespace WebAppMVC.Infrastructure
     {
         public DbSet<Address> Addresses { get; set; }
 
-        //public DbSet<ContactDetail> ContactDetails { get; set; }
-
-        //public DbSet<ContactDetailType> ContactDetailTypes { get; set; }
-
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<CustomerContactInformaction> CustomerContactInformactions { get; set; }
@@ -51,19 +47,6 @@ namespace WebAppMVC.Infrastructure
                 .HasMany<Address>(it => it.AddressDetails)
                 .WithOne(b => b.Customer)
                 .HasForeignKey(e => e.CustomerId);
-
-            //builder.Entity<ContactDetail>()
-            //    .HasKey(it => new { it.ContactDetailTypeId, it.CustomerId });
-
-            //builder.Entity<ContactDetail>()
-            //    .HasOne<ContactDetailType> (it => it.ContactDetailType)
-            //    .WithMany(i => i.ContactDetails)
-            //    .HasForeignKey(it => it.ContactDetailTypeId);
-
-            //builder.Entity<ContactDetail>()
-            //    .HasOne<Customer>(it => it.Customer)
-            //    .WithMany(i => i.ContactDetails)
-            //    .HasForeignKey(it => it.CustomerId);
 
             builder.Entity<ItemTag>()
                 .HasKey(it => new { it.ItemId, it.TagId });

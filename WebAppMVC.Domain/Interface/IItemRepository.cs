@@ -15,6 +15,8 @@ namespace WebAppMVC.Application.Interfaces
 
         public Item GetItemById(int itemId);
 
+        public IQueryable<Item> GetAllItems();
+
         public int AddItemIngredients(ItemIngredient ingredients);
         
         public void DeleteItemIngredients(int itemId);
@@ -39,5 +41,17 @@ namespace WebAppMVC.Application.Interfaces
 
         public IQueryable<Ingredient> GetAllIngredients();
 
+        public int AddTag (Tag tag);
+
+        public void DeleteTag(Tag tag);
+
+        public Tag GetTagById(int tagId);
+
+        public IQueryable<Tag> GetAllTags();
+
+        public int AddType (Type type);
+
+        public void DeleteType(Type type);
+        public IQueryable<Type> GetAllTypes();
     }
 }

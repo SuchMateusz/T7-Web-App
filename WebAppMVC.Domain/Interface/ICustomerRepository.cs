@@ -12,6 +12,10 @@ namespace WebAppMVC.Application.Interfaces
 
         public void DeleteCustomer(int customerId);
 
+        public int AddCustomerContactInformaction (CustomerContactInformaction customerContactInformaction);
+
+        public void DeleteCustomerContactInformaction(int customerContactInformactionId);
+
         public IQueryable<CustomerContactInformaction> GetCustomerContactInformactions();
         
         public int AddAddresses (Address address);

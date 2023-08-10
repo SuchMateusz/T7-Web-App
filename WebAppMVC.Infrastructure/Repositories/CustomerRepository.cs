@@ -33,6 +33,19 @@ namespace WebAppMVC.Infrastructure.Repositories
             }
         }
 
+        public int AddCustomerContactInformaction(CustomerContactInformaction customerContactInformaction)
+        {
+            _context.CustomerContactInformactions.Add(customerContactInformaction);
+            _context.SaveChanges();
+            return customerContactInformaction.Id;
+        }
+
+        public void DeleteCustomerContactInformaction(int customerContactInformactionId)
+        {
+            var customerContactInformaction = _context.CustomerContactInformactions.Find(customerContactInformactionId);
+            _context.CustomerContactInformactions.Remove(customerContactInformaction);
+        }
+
         public IQueryable<CustomerContactInformaction> GetCustomerContactInformactions()
         {
             var ContactInformaction = _context.CustomerContactInformactions;
