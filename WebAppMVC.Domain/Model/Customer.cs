@@ -18,6 +18,8 @@ namespace WebAppMVC.Domain.Model
 
         public string AddressEmail { get; set; }
 
+        public bool isActive { get; set; }
+
         public CustomerContactInformaction CustomerContactInformaction { get; set; }
 
         public virtual ICollection<Address> AddressDetails { get; set; }

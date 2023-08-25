@@ -70,5 +70,11 @@ namespace WebAppMVC.Infrastructure.Repositories
             var addresses = _context.Addresses;
             return addresses;
         }
+
+        public IQueryable<Customer> GetAllActiveCustomers()
+        {
+            var customers = _context.Customers;
+            return customers;
+        }
     }
 }
